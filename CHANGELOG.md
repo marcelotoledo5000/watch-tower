@@ -6,6 +6,7 @@
 * Added CodeClimate config
 * Added Travis-CI config
 * Postgres Database setup
+* Some gems setup
 
   *Marcelo Toledo*
 
