@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -9,8 +11,8 @@ gem 'bootsnap', '>= 1.4', require: false
 gem 'kaminari', '~> 1.2'
 gem 'pg', '~> 1.2'
 gem 'puma', '~> 4.3'
-gem 'rails', '~> 6.0.2'
 gem 'rack-cors', '~> 1.1'
+gem 'rails', '~> 6.0.2'
 
 group :development, :test do
   gem 'database_cleaner', '~> 1.8'
