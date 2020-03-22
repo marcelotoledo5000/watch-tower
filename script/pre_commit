@@ -1,0 +1,12 @@
+#!/bin/bash
+
+script/docker_validate
+
+echo 'Rubocop scanning'
+docker-compose exec server bundle exec rubocop $@
+
+echo 'Vulnerabilities scanning'
+docker-compose exec server bundle exec brakeman $@
+
+echo 'Testing'
+docker-compose exec server bundle exec rspec $@

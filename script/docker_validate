@@ -1,0 +1,8 @@
+#!/bin/bash
+
+CONTAINER_CREATED=$(docker ps --filter "name=watch_tower_server" --format "{{.Names}}")
+
+if [[ "$CONTAINER_CREATED" == "" ]]; then
+    echo "Server was not running. Run it to speed up"
+    docker-compose up -d
+fi

@@ -1,0 +1,25 @@
+# https://github.com/marcelotoledo5000/Dockerfiles
+# https://hub.docker.com/repository/docker/skygvinn/alpine-ruby2.6.5-nodejs
+
+version: '3.6'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+  server:
+    image: skygvinn/alpine-ruby2.7.0-nodejs:v1.0
+    container_name: watch_tower
+    ports:
+      - "3000:3000"
+    environment:
+      - BUNDLE_PATH=vendor/bundle
+      - BUNDLE_DISABLE_SHARED_GEMS=1
+    volumes:
+      - .:/var/www/watch_tower:Z
+    working_dir: /var/www/watch_tower
+    command: bundle exec rails s -b 0.0.0.0
+    depends_on:
+      - db
