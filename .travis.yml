@@ -2,7 +2,7 @@ dist: trusty
 
 env:
   global:
-    - CC_TEST_REPORTER_ID=  XXXXX CHANGE HERE TOKEN XXXXX
+    - CC_TEST_REPORTER_ID=7ba84099ef83291a5ccd6e0d19ae70e6953dd77d2eeceed1ca4a2e7f28c84a17
     - PGPORT=5433
 
 services:
