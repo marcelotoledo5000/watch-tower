@@ -1,0 +1,4 @@
+#!/bin/bash
+
+script/docker_validate
+docker-compose exec server bundle exec rspec $@

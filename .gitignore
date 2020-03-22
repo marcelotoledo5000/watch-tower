@@ -25,3 +25,6 @@
 
 # Ignore coverage
 coverage
+
+# rspec
+/spec/examples.txt

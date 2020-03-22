@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # host: localhost  # when using localhost
+  host: db       # when using docker
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: watch_tower_development
+
+test:
+  <<: *default
+  database: watch_tower_test
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+  database: watch_tower_production
+  username: watch_tower
+  password: <%= ENV['WATCH_TOWER_DATABASE_PASSWORD'] %>
+  pool: 10
