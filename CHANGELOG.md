@@ -1,4 +1,10 @@
-# watch_tower 0.0.2 (Mar 22, 2020)
+# watch_tower 0.0.3 (Mar 22, 2020)
+
+* Added Store model
+
+  *Marcelo Toledo*
+
+## watch_tower 0.0.2 (Mar 22, 2020)
 
 * Project setup
 * Added docker
