@@ -29,7 +29,7 @@ describe 'Stores', type: :request do
 
     context 'when is bad request' do
       it 'returns status code 400' do
-        expect{ post stores_path }.
+        expect { post stores_path }.
           to raise_error ActionController::ParameterMissing
       end
     end
@@ -37,7 +37,7 @@ describe 'Stores', type: :request do
     context 'when the request is invalid' do
       before do
         post stores_path,
-             params: { store: { cnpj: ''} }
+             params: { store: { cnpj: '' } }
       end
 
       it 'returns status code 422' do
@@ -141,7 +141,7 @@ describe 'Stores', type: :request do
       end
 
       it 'deletes the store' do
-        expect{ store.reload }.
+        expect { store.reload }.
           to raise_error(ActiveRecord::RecordNotFound, message)
       end
 
