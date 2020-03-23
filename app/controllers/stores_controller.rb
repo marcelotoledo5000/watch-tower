@@ -8,6 +8,13 @@ class StoresController < ApplicationController
     end
   end
 
+  # GET /stores/:id
+  def show
+    Store.find(params[:id]).then do |store|
+      json_response store
+    end
+  end
+
   private
 
   def store_params
