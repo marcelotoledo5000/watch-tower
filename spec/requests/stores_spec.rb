@@ -85,5 +85,49 @@ describe 'Stores', type: :request do
       end
     end
   end
+
+  describe 'PUT /stores/:id' do
+    context 'when the record exists' do
+      let(:store) { create(:store) }
+
+      let(:valid_params) do
+        {
+          store: {
+            cnpj: 10_111_222_000_100,
+            name: 'The Best Store'
+          }
+        }
+      end
+
+      before do
+        put store_path(store.id),
+            params: valid_params
+      end
+
+      it 'updates the store' do
+        store.reload
+
+        expect(store.cnpj).to eq '10111222000100'
+        expect(store.name).to eq 'The Best Store'
+      end
+
+      it 'returns status code 204' do
+        expect(response.body).to be_empty
+        expect(response).to have_http_status :no_content
+      end
+    end
+
+    context 'when the record does not exist' do
+      before do
+        put store_path(100)
+      end
+
+      it { expect(response).to have_http_status :not_found }
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Store with 'id'=100/)
+      end
+    end
+  end
   end
 end

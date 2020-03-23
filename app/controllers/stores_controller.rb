@@ -15,6 +15,14 @@ class StoresController < ApplicationController
     end
   end
 
+  # PUT /stores/:id
+  def update
+    Store.find(params[:id]).then do |store|
+      store.update(store_params).then do |result|
+        json_response result, :no_content
+      end
+    end
+  end
   private
 
   def store_params
