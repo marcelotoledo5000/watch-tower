@@ -129,5 +129,38 @@ describe 'Stores', type: :request do
       end
     end
   end
+
+  describe 'DELETE /stores/:id' do
+    context 'when the record exists' do
+      let(:store) { create(:store) }
+      let(:id) { store.id }
+      let(:message) { "Couldn't find Store with 'id'=#{id}" }
+
+      before do
+        delete store_path(store.id)
+      end
+
+      it 'deletes the store' do
+        expect{ store.reload }.
+          to raise_error(ActiveRecord::RecordNotFound, message)
+      end
+
+      it 'returns status code 204' do
+        expect(response.body).to be_empty
+        expect(response).to have_http_status :no_content
+      end
+    end
+
+    context 'when the record does not exist' do
+      before do
+        delete store_path(100)
+      end
+
+      it { expect(response).to have_http_status :not_found }
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Store with 'id'=100/)
+      end
+    end
   end
 end

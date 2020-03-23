@@ -23,6 +23,14 @@ class StoresController < ApplicationController
       end
     end
   end
+
+  # DELETE /stores/:id
+  def destroy
+    Store.find(params[:id]).destroy.then do |store|
+      json_response store, :no_content
+    end
+  end
+
   private
 
   def store_params
