@@ -10,6 +10,7 @@ describe 'Visitors', type: :request do
         visitor: {
           cpf: 111_222_333_45,
           name: 'Thorfast Karsson',
+          profile_photo: 'Photo171',
           store_id: store.id
         }
       }
@@ -26,6 +27,7 @@ describe 'Visitors', type: :request do
         expect(json).not_to be_empty
         expect(json[:cpf]).to eq '11122233345'
         expect(json[:name]).to eq 'Thorfast Karsson'
+        expect(json[:profile_photo]).to eq 'Photo171'
       end
     end
 
@@ -71,6 +73,7 @@ describe 'Visitors', type: :request do
         expect(json).not_to be_empty
         expect(json[:cpf]).to eq visitor.cpf
         expect(json[:name]).to eq visitor.name
+        expect(json[:profile_photo]).to eq visitor.profile_photo
       end
 
       it { expect(response).to have_http_status :ok }
@@ -98,7 +101,8 @@ describe 'Visitors', type: :request do
         {
           visitor: {
             cpf: 111_222_333_45,
-            name: 'Thorfast Karsson'
+            name: 'Thorfast Karsson',
+            profile_photo: 'Photo1'
           }
         }
       end
@@ -113,6 +117,7 @@ describe 'Visitors', type: :request do
 
         expect(visitor.cpf).to eq '11122233345'
         expect(visitor.name).to eq 'Thorfast Karsson'
+        expect(visitor.profile_photo).to eq 'Photo1'
       end
 
       it 'returns status code 204' do

@@ -14,5 +14,6 @@ describe Visitor, type: :model do
     it { is_expected.to validate_length_of(:cpf).is_at_most(11) }
     it { is_expected.to validate_uniqueness_of(:cpf).case_insensitive }
     it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:profile_photo) }
   end
 end
