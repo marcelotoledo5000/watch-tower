@@ -1,4 +1,10 @@
-# watch_tower 0.0.3 (Mar 22, 2020)
+# watch_tower 0.0.4 (Mar 29, 2020)
+
+* Added Visitor model
+
+  *Marcelo Toledo*
+
+## watch_tower 0.0.3 (Mar 22, 2020)
 
 * Added Store model
 
