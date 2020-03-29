@@ -18,7 +18,7 @@ class VisitorsController < ApplicationController
   # PUT /visitors/:id
   def update
     Visitor.find(params[:id]).then do |visitor|
-      Visitor.update(visitor_params).then do |result|
+      visitor.update(visitor_params).then do |result|
         json_response result, :no_content
       end
     end

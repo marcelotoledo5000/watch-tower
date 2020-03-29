@@ -98,7 +98,7 @@ describe 'Visitors', type: :request do
         {
           visitor: {
             cpf: 111_222_333_45,
-            name: 'Thorfast Karsson',
+            name: 'Thorfast Karsson'
           }
         }
       end

@@ -6,7 +6,10 @@ describe Store, type: :model do
   subject(:store) { create(:store) }
 
   context 'with associations' do
-    it { is_expected.to have_many(:visitors).inverse_of(:store) }
+    it do
+      expect(store).to have_many(:visitors).inverse_of(:store).
+        dependent(:destroy)
+    end
   end
 
   context 'with validations' do
