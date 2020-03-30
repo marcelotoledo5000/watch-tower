@@ -58,16 +58,14 @@ describe 'Stores', type: :request do
 
   describe 'GET /stores' do
     context 'when call the index of stores' do
-      let(:store) { create(:store, name: 'The Incredible Store') }
-      let(:stores) { create_list(:store, 10) }
+      let(:stores) { create_list(:store, 11) }
 
       before do
-        store
         stores
         get stores_path
       end
 
-      it 'returns the store' do
+      it 'returns the stores' do
         expect(json).not_to be_empty
         expect(json.size).to eq 11
       end
