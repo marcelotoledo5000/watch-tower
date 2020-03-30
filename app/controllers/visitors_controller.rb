@@ -34,6 +34,6 @@ class VisitorsController < ApplicationController
   private
 
   def visitor_params
-    params.require(:visitor).permit(:cpf, :name, :store_id)
+    params.require(:visitor).permit(:cpf, :name, :profile_photo, :store_id)
   end
 end
