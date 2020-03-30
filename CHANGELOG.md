@@ -1,4 +1,10 @@
-# watch_tower 0.0.4 (Mar 29, 2020)
+# watch_tower 0.0.5 (Mar 29, 2020)
+
+* Added photo to visitors
+
+  *Marcelo Toledo*
+
+## watch_tower 0.0.4 (Mar 29, 2020)
 
 * Added Visitor model
 
