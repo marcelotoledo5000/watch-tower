@@ -17,8 +17,6 @@ class FilterStoresService
 
   private
 
-  attr_accessor :stores
-
   def stores
     @stores ||= Store.all
   end
