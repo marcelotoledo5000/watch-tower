@@ -60,6 +60,101 @@ describe 'Visitors', type: :request do
     end
   end
 
+  describe 'GET /visitors' do
+    context 'when call the index of visitors' do
+      let(:visitors) { create_list(:visitor, 11) }
+
+      before do
+        visitors
+        get visitors_path
+      end
+
+      it 'returns the store' do
+        expect(json).not_to be_empty
+        expect(json.size).to eq 11
+      end
+
+      it { expect(response).to have_http_status :ok }
+    end
+
+    context 'with search by cpf' do
+      let(:visitor) { create(:visitor, cpf: 111_222_333_45) }
+      let(:visitors) { create_list(:visitor, 10) }
+      let(:filtered_visitor) { json.first[:visitors] }
+      let(:params) do
+        {
+          search: {
+            cpf: 111_222_333_45 # or '111_222_333_45'
+          }
+        }
+      end
+
+      before do
+        visitor
+        visitors
+        get visitors_path, params: params
+      end
+
+      it 'returns the visitor' do
+        expect(json).not_to be_empty
+        expect(filtered_visitor[:id]).to eq visitor.id
+        expect(filtered_visitor[:cpf]).to eq visitor.cpf
+        expect(filtered_visitor[:name]).to eq visitor.name
+        expect(filtered_visitor[:profile_photo]).to eq visitor.profile_photo
+      end
+
+      it { expect(response).to have_http_status :ok }
+    end
+
+    context 'with search by name' do
+      let(:visitor) { create(:visitor, name: 'Thorfast Karsson') }
+      let(:visitors) { create_list(:visitor, 10) }
+      let(:filtered_visitor) { json.first[:visitors] }
+      let(:params) do
+        {
+          search: {
+            name: 'kars'
+          }
+        }
+      end
+
+      before do
+        visitor
+        visitors
+        get visitors_path, params: params
+      end
+
+      it 'returns the visitor' do
+        expect(json).not_to be_empty
+        expect(filtered_visitor[:id]).to eq visitor.id
+        expect(filtered_visitor[:cpf]).to eq visitor.cpf
+        expect(filtered_visitor[:name]).to eq visitor.name
+        expect(filtered_visitor[:profile_photo]).to eq visitor.profile_photo
+      end
+
+      it { expect(response).to have_http_status :ok }
+    end
+
+    context 'when the record does not exist' do
+      let(:visitor) { create(:visitor, name: 'Thorfast Karsson') }
+      let(:params) do
+        {
+          search: {
+            name: 'AbrahCadabrah'
+          }
+        }
+      end
+
+      before do
+        visitor
+        get visitors_path, params: params
+      end
+
+      it { expect(response).to have_http_status :ok }
+      it { expect(json).to be_empty }
+    end
+  end
+
   describe 'GET /visitors/:id' do
     context 'when the record exists' do
       let(:store) { create(:store) }

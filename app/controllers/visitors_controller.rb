@@ -8,6 +8,15 @@ class VisitorsController < ApplicationController
     end
   end
 
+  # GET /visitors
+  def index
+    FilterVisitorsService.new(search_params).perform.then do |result|
+      result.page(page_permitted).then do |visitors|
+        render json: visitors, status: :ok, root: 'visitors'
+      end
+    end
+  end
+
   # GET /visitors/:id
   def show
     Visitor.find(params[:id]).then do |visitor|
@@ -35,5 +44,9 @@ class VisitorsController < ApplicationController
 
   def visitor_params
     params.require(:visitor).permit(:cpf, :name, :profile_photo, :store_id)
+  end
+
+  def search_params
+    params.fetch(:search, {}).permit(:cpf, :name)
   end
 end
