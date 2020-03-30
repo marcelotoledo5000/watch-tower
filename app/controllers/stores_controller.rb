@@ -8,6 +8,15 @@ class StoresController < ApplicationController
     end
   end
 
+  # GET /stores
+  def index
+    FilterStoresService.new(search_params).perform.then do |result|
+      result.page(page_permitted).then do |stores|
+        render json: stores, status: :ok, root: 'stores'
+      end
+    end
+  end
+
   # GET /stores/:id
   def show
     Store.find(params[:id]).then do |store|
@@ -35,5 +44,9 @@ class StoresController < ApplicationController
 
   def store_params
     params.require(:store).permit(:cnpj, :name)
+  end
+
+  def search_params
+    params.fetch(:search, {}).permit(:cnpj, :name)
   end
 end

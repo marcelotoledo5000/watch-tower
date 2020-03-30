@@ -56,6 +56,99 @@ describe 'Stores', type: :request do
     end
   end
 
+  describe 'GET /stores' do
+    context 'when call the index of stores' do
+      let(:store) { create(:store, name: 'The Incredible Store') }
+      let(:stores) { create_list(:store, 10) }
+
+      before do
+        store
+        stores
+        get stores_path
+      end
+
+      it 'returns the store' do
+        expect(json).not_to be_empty
+        expect(json.size).to eq 11
+      end
+
+      it { expect(response).to have_http_status :ok }
+    end
+
+    context 'with search by cnpj' do
+      let(:store) { create(:store, cnpj: 11_222_333_000_100) }
+      let(:stores) { create_list(:store, 10) }
+      let(:params) do
+        {
+          search: {
+            cnpj: 11_222_333_000_100 # or '11_222_333_000_100'
+          }
+        }
+      end
+
+      before do
+        store
+        stores
+        get stores_path, params: params
+      end
+
+      it 'returns the store' do
+        expect(json).not_to be_empty
+        expect(json.first[:stores][:id]).to eq store.id
+        expect(json.first[:stores][:cnpj]).to eq store.cnpj
+        expect(json.first[:stores][:name]).to eq store.name
+      end
+
+      it { expect(response).to have_http_status :ok }
+    end
+
+    context 'with search by name' do
+      let(:store) { create(:store, name: 'The Incredible Store') }
+      let(:stores) { create_list(:store, 10) }
+      let(:params) do
+        {
+          search: {
+            name: 'incredible'
+          }
+        }
+      end
+
+      before do
+        store
+        stores
+        get stores_path, params: params
+      end
+
+      it 'returns the store' do
+        expect(json).not_to be_empty
+        expect(json.first[:stores][:id]).to eq store.id
+        expect(json.first[:stores][:cnpj]).to eq store.cnpj
+        expect(json.first[:stores][:name]).to eq store.name
+      end
+
+      it { expect(response).to have_http_status :ok }
+    end
+
+    context 'when the record does not exist' do
+      let(:store) { create(:store, name: 'The Incredible Store') }
+      let(:params) do
+        {
+          search: {
+            name: 'AbrahCadabrah'
+          }
+        }
+      end
+
+      before do
+        store
+        get stores_path, params: params
+      end
+
+      it { expect(response).to have_http_status :ok }
+      it { expect(json).to be_empty }
+    end
+  end
+
   describe 'GET /stores/:id' do
     context 'when the record exists' do
       let(:store) { create(:store) }
