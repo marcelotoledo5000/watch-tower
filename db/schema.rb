@@ -23,6 +23,24 @@ ActiveRecord::Schema.define(version: 2020_03_29_170915) do
     t.index ["cnpj"], name: "index_stores_on_cnpj", unique: true
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "login", null: false
+    t.string "name", null: false
+    t.integer "role", default: 0, null: false
+    t.bigint "store_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["login"], name: "index_users_on_login", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["store_id"], name: "index_users_on_store_id"
+  end
+
   create_table "visitors", force: :cascade do |t|
     t.string "cpf", limit: 11, null: false
     t.string "name", null: false
@@ -34,5 +52,6 @@ ActiveRecord::Schema.define(version: 2020_03_29_170915) do
     t.index ["store_id"], name: "index_visitors_on_store_id"
   end
 
+  add_foreign_key "users", "stores"
   add_foreign_key "visitors", "stores"
 end
