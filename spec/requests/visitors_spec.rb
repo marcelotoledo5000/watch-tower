@@ -32,10 +32,12 @@ describe 'Visitors', type: :request do
     end
 
     context 'when is bad request' do
-      it 'returns status code 400' do
-        expect { post visitors_path }.
-          to raise_error ActionController::ParameterMissing
-      end
+      let(:error_msg) { 'param is missing or the value is empty: visitor' }
+
+      before { post visitors_path, params: {} }
+
+      it { expect(response).to have_http_status :bad_request }
+      it { expect(json[:message]).to match(/#{error_msg}/) }
     end
 
     context 'when the request is invalid' do
