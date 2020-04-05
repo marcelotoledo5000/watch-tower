@@ -1,4 +1,12 @@
-# watch_tower 0.0.7 (Mar 29, 2020)
+# watch_tower 0.0.8 (Apr 05, 2020)
+
+* Added Users model
+* Added `devise-jwt` gem
+* Added `dotenv-rails` gem
+* Added Authentication
+* Added JwtBlackList Strategy
+
+  *Marcelo Toledo*
 
 ## watch_tower 0.0.7 (Mar 29, 2020)
 
