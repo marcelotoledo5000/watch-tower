@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def index
     User.all.then do |result|
       result.page(page_permitted).then do |users|
-        render json: users, status: :ok, root: :users
+        json_response users
       end
     end
   end
