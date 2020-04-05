@@ -1,5 +1,7 @@
 # watch_tower 0.0.7 (Mar 29, 2020)
 
+## watch_tower 0.0.7 (Mar 29, 2020)
+
 * Added search to visitors
 
   *Marcelo Toledo*
