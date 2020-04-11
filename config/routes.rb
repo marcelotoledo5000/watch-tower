@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :stores
   resources :visitors
   resources :users, only: %i[create index update]
+  resources :appointments, only: %i[create index]
 end
