@@ -7,6 +7,11 @@ describe Visitor, type: :model do
 
   context 'with associations' do
     it { is_expected.to belong_to(:store).inverse_of(:visitors) }
+
+    it do
+      expect(visitor).to have_many(:appointments).inverse_of(:visitor).
+        dependent(:destroy)
+    end
   end
 
   context 'with validations' do
