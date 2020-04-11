@@ -30,7 +30,6 @@ describe 'Appointments', type: :request do
       it 'creates a appointment' do
         expect(response).to have_http_status :created
         expect(json).not_to be_empty
-        binding.pry
         expect(json[:visitor]).to eq visitor.name
         expect(json[:store]).to eq store.name
         expect(json[:kind]).to eq valid_params[:appointment][:kind]
