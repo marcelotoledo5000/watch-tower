@@ -3,6 +3,9 @@
 require 'rails_helper'
 
 describe 'Visitors', type: :request do
+  let(:user) { create(:user) }
+  let(:headers) { request_headers_jwt(user) }
+
   describe 'POST /visitors' do
     let(:store) { create(:store) }
     let(:valid_params) do
@@ -17,10 +20,7 @@ describe 'Visitors', type: :request do
     end
 
     context 'when the request is valid' do
-      before do
-        post visitors_path,
-             params: valid_params
-      end
+      before { post visitors_path, params: valid_params, headers: headers }
 
       it 'creates a store' do
         expect(response).to have_http_status :created
@@ -34,7 +34,7 @@ describe 'Visitors', type: :request do
     context 'when is bad request' do
       let(:error_msg) { 'param is missing or the value is empty: visitor' }
 
-      before { post visitors_path, params: {} }
+      before { post visitors_path, params: {}, headers: headers }
 
       it { expect(response).to have_http_status :bad_request }
       it { expect(json[:message]).to match(/#{error_msg}/) }
@@ -43,7 +43,8 @@ describe 'Visitors', type: :request do
     context 'when the request is invalid' do
       before do
         post visitors_path,
-             params: { visitor: { cnpj: '' } }
+             params: { visitor: { cnpj: '' } },
+             headers: headers
       end
 
       it 'returns status code 422' do
@@ -52,13 +53,13 @@ describe 'Visitors', type: :request do
       end
     end
 
-    xcontext 'when the user is unauthorized' do
-      before do
-        post visitors_path,
-             params: valid_params
-      end
+    context 'when the user is unauthorized' do
+      let(:message) { 'You need to sign in or sign up before continuing.' }
+
+      before { post visitors_path, headers: {} }
 
       it { expect(response).to have_http_status :unauthorized }
+      it { expect(response.body).to eq message }
     end
   end
 
@@ -68,7 +69,7 @@ describe 'Visitors', type: :request do
 
       before do
         visitors
-        get visitors_path
+        get visitors_path, headers: headers
       end
 
       it 'returns the store' do
@@ -94,7 +95,7 @@ describe 'Visitors', type: :request do
       before do
         visitor
         visitors
-        get visitors_path, params: params
+        get visitors_path, params: params, headers: headers
       end
 
       it 'returns the visitor' do
@@ -123,7 +124,7 @@ describe 'Visitors', type: :request do
       before do
         visitor
         visitors
-        get visitors_path, params: params
+        get visitors_path, params: params, headers: headers
       end
 
       it 'returns the visitor' do
@@ -149,11 +150,20 @@ describe 'Visitors', type: :request do
 
       before do
         visitor
-        get visitors_path, params: params
+        get visitors_path, params: params, headers: headers
       end
 
       it { expect(response).to have_http_status :ok }
       it { expect(json).to be_empty }
+    end
+
+    context 'when the user is unauthorized' do
+      let(:message) { 'You need to sign in or sign up before continuing.' }
+
+      before { get visitors_path, headers: {} }
+
+      it { expect(response).to have_http_status :unauthorized }
+      it { expect(response.body).to eq message }
     end
   end
 
@@ -162,9 +172,7 @@ describe 'Visitors', type: :request do
       let(:store) { create(:store) }
       let(:visitor) { create(:visitor, store: store) }
 
-      before do
-        get visitor_path(visitor.id)
-      end
+      before { get visitor_path(visitor.id), headers: headers }
 
       it 'returns the visitor' do
         expect(json).not_to be_empty
@@ -177,15 +185,22 @@ describe 'Visitors', type: :request do
     end
 
     context 'when the record does not exist' do
-      before do
-        get visitor_path(100)
-      end
+      before { get visitor_path(100), headers: headers }
 
       it { expect(response).to have_http_status :not_found }
 
       it 'returns a not found message' do
         expect(response.body).to match(/Couldn't find Visitor with 'id'=100/)
       end
+    end
+
+    context 'when the user is unauthorized' do
+      let(:message) { 'You need to sign in or sign up before continuing.' }
+
+      before { get visitor_path(100), headers: {} }
+
+      it { expect(response).to have_http_status :unauthorized }
+      it { expect(response.body).to eq message }
     end
   end
 
@@ -206,7 +221,8 @@ describe 'Visitors', type: :request do
 
       before do
         put visitor_path(visitor.id),
-            params: valid_params
+            params: valid_params,
+            headers: headers
       end
 
       it 'updates the visitor' do
@@ -224,15 +240,22 @@ describe 'Visitors', type: :request do
     end
 
     context 'when the record does not exist' do
-      before do
-        put store_path(100)
-      end
+      before { put visitor_path(100), headers: headers }
 
       it { expect(response).to have_http_status :not_found }
 
       it 'returns a not found message' do
-        expect(response.body).to match(/Couldn't find Store with 'id'=100/)
+        expect(response.body).to match(/Couldn't find Visitor with 'id'=100/)
       end
+    end
+
+    context 'when the user is unauthorized' do
+      let(:message) { 'You need to sign in or sign up before continuing.' }
+
+      before { put visitor_path(100), headers: {} }
+
+      it { expect(response).to have_http_status :unauthorized }
+      it { expect(response.body).to eq message }
     end
   end
 
@@ -243,9 +266,7 @@ describe 'Visitors', type: :request do
       let(:id) { visitor.id }
       let(:message) { "Couldn't find Visitor with 'id'=#{id}" }
 
-      before do
-        delete visitor_path(visitor.id)
-      end
+      before { delete visitor_path(visitor.id), headers: headers }
 
       it 'deletes the visitor' do
         expect { visitor.reload }.
@@ -262,15 +283,22 @@ describe 'Visitors', type: :request do
       let(:id) { 100 }
       let(:message) { "Couldn't find Visitor with 'id'=#{id}" }
 
-      before do
-        delete visitor_path(id)
-      end
+      before { delete visitor_path(id), headers: headers }
 
       it { expect(response).to have_http_status :not_found }
 
       it 'returns a not found message' do
         expect(response.body).to match(/#{message}/)
       end
+    end
+
+    context 'when the user is unauthorized' do
+      let(:message) { 'You need to sign in or sign up before continuing.' }
+
+      before { delete visitor_path(100), headers: {} }
+
+      it { expect(response).to have_http_status :unauthorized }
+      it { expect(response.body).to eq message }
     end
   end
 end

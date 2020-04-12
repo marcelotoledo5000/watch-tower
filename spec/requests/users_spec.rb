@@ -3,6 +3,9 @@
 require 'rails_helper'
 
 describe 'Users', type: :request do
+  let(:user_admin) { create(:user) }
+  let(:headers) { request_headers_jwt(user_admin) }
+
   describe 'POST /signup' do
     let(:store) { create(:store) }
     let(:login) { Faker::Internet.username(specifier: 8) }
@@ -26,7 +29,7 @@ describe 'Users', type: :request do
     end
 
     context 'when user is created' do
-      before { post users_path, params: valid_params }
+      before { post users_path, params: valid_params, headers: headers }
 
       it { expect(response).to have_http_status :created }
 
@@ -41,7 +44,7 @@ describe 'Users', type: :request do
 
       before do
         create(:user, valid_params[:user])
-        post users_path, params: valid_params
+        post users_path, params: valid_params, headers: headers
       end
 
       it { expect(response).to have_http_status :unprocessable_entity }
@@ -52,7 +55,7 @@ describe 'Users', type: :request do
       let(:invalid_params) { {} }
       let(:error_msg) { 'param is missing or the value is empty: user' }
 
-      before { post users_path, params: invalid_params }
+      before { post users_path, params: invalid_params, headers: headers }
 
       it { expect(response).to have_http_status :bad_request }
       it { expect(json[:message]).to match(/#{error_msg}/) }
@@ -61,7 +64,7 @@ describe 'Users', type: :request do
     context 'when the password is less than the minimum required' do
       let(:password) { '1234567' }
 
-      before { post users_path, params: valid_params }
+      before { post users_path, params: valid_params, headers: headers }
 
       it 'returns status code 422' do
         expect(json).not_to be_empty
@@ -69,30 +72,37 @@ describe 'Users', type: :request do
         expect(json[:message]).to match(/(minimum is 8 characters)/)
       end
     end
+
+    context 'when the user is unauthorized' do
+      let(:message) { 'You need to sign in or sign up before continuing.' }
+
+      before { post users_path, headers: {} }
+
+      it { expect(response).to have_http_status :unauthorized }
+      it { expect(response.body).to eq message }
+    end
   end
 
   describe 'GET /users' do
-    context 'when the user is unauthorized' do
-      before do
-        get users_path,
-            headers: headers
-      end
-
-      xit 'returns status code 401' do
-        expect(response).to have_http_status :unauthorized
-      end
-    end
-
     context 'when returns users' do
       before do
         create_list(:user, 25)
-        get users_path
+        get users_path, headers: headers
       end
 
       it { expect(json).not_to be_empty }
       it { expect(json.size).to eq 20 }
-      it { expect(User.count).to eq 25 }
+      it { expect(User.count).to eq 26 }
       it { expect(response).to have_http_status :ok }
+    end
+
+    context 'when the user is unauthorized' do
+      let(:message) { 'You need to sign in or sign up before continuing.' }
+
+      before { get users_path, headers: {} }
+
+      it { expect(response).to have_http_status :unauthorized }
+      it { expect(response.body).to eq message }
     end
   end
 
@@ -120,9 +130,7 @@ describe 'Users', type: :request do
         }
       end
 
-      before do
-        put user_path(user.id), params: valid_params
-      end
+      before { put user_path(user.id), params: valid_params, headers: headers }
 
       it 'updates the user' do
         user.reload
@@ -138,15 +146,22 @@ describe 'Users', type: :request do
     end
 
     context 'when the record does not exist' do
-      before do
-        put user_path(100)
-      end
+      before { put user_path(100), headers: headers }
 
       it { expect(response).to have_http_status :not_found }
 
       it 'returns a not found message' do
         expect(response.body).to match(/Couldn't find User with 'id'=100/)
       end
+    end
+
+    context 'when the user is unauthorized' do
+      let(:message) { 'You need to sign in or sign up before continuing.' }
+
+      before { put user_path(100), headers: {} }
+
+      it { expect(response).to have_http_status :unauthorized }
+      it { expect(response.body).to eq message }
     end
   end
 end
