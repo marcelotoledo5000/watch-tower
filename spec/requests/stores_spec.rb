@@ -95,9 +95,9 @@ describe 'Stores', type: :request do
 
       it 'returns the store' do
         expect(json).not_to be_empty
-        expect(json.first[:stores][:id]).to eq store.id
-        expect(json.first[:stores][:cnpj]).to eq store.cnpj
-        expect(json.first[:stores][:name]).to eq store.name
+        expect(json.first[:id]).to eq store.id
+        expect(json.first[:cnpj]).to eq store.cnpj
+        expect(json.first[:name]).to eq store.name
       end
 
       it { expect(response).to have_http_status :ok }
@@ -122,9 +122,9 @@ describe 'Stores', type: :request do
 
       it 'returns the store' do
         expect(json).not_to be_empty
-        expect(json.first[:stores][:id]).to eq store.id
-        expect(json.first[:stores][:cnpj]).to eq store.cnpj
-        expect(json.first[:stores][:name]).to eq store.name
+        expect(json.first[:id]).to eq store.id
+        expect(json.first[:cnpj]).to eq store.cnpj
+        expect(json.first[:name]).to eq store.name
       end
 
       it { expect(response).to have_http_status :ok }

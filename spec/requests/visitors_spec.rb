@@ -83,7 +83,6 @@ describe 'Visitors', type: :request do
     context 'with search by cpf' do
       let(:visitor) { create(:visitor, cpf: 111_222_333_45) }
       let(:visitors) { create_list(:visitor, 10) }
-      let(:filtered_visitor) { json.first[:visitors] }
       let(:params) do
         {
           search: {
@@ -100,10 +99,10 @@ describe 'Visitors', type: :request do
 
       it 'returns the visitor' do
         expect(json).not_to be_empty
-        expect(filtered_visitor[:id]).to eq visitor.id
-        expect(filtered_visitor[:cpf]).to eq visitor.cpf
-        expect(filtered_visitor[:name]).to eq visitor.name
-        expect(filtered_visitor[:profile_photo]).to eq visitor.profile_photo
+        expect(json.first[:id]).to eq visitor.id
+        expect(json.first[:cpf]).to eq visitor.cpf
+        expect(json.first[:name]).to eq visitor.name
+        expect(json.first[:profile_photo]).to eq visitor.profile_photo
       end
 
       it { expect(response).to have_http_status :ok }
@@ -112,7 +111,6 @@ describe 'Visitors', type: :request do
     context 'with search by name' do
       let(:visitor) { create(:visitor, name: 'Thorfast Karsson') }
       let(:visitors) { create_list(:visitor, 10) }
-      let(:filtered_visitor) { json.first[:visitors] }
       let(:params) do
         {
           search: {
@@ -129,10 +127,10 @@ describe 'Visitors', type: :request do
 
       it 'returns the visitor' do
         expect(json).not_to be_empty
-        expect(filtered_visitor[:id]).to eq visitor.id
-        expect(filtered_visitor[:cpf]).to eq visitor.cpf
-        expect(filtered_visitor[:name]).to eq visitor.name
-        expect(filtered_visitor[:profile_photo]).to eq visitor.profile_photo
+        expect(json.first[:id]).to eq visitor.id
+        expect(json.first[:cpf]).to eq visitor.cpf
+        expect(json.first[:name]).to eq visitor.name
+        expect(json.first[:profile_photo]).to eq visitor.profile_photo
       end
 
       it { expect(response).to have_http_status :ok }
