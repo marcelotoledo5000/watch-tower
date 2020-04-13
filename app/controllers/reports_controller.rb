@@ -5,6 +5,6 @@ class ReportsController < ApplicationController
 
   # GET /reports
   def index
-    render json: StoreIndexService.new, serializer: StoreIndexSerializer
+    render json: StoreIndexService.perform!, serializer: StoreIndexSerializer
   end
 end
