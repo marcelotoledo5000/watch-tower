@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class StoresController < ApplicationController
+  authorize_resource
+
   # POST /stores
   def create
     Store.create!(store_params).then do |store|

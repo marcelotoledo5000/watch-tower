@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class VisitorsController < ApplicationController
+  authorize_resource
+
   # POST /visitors
   def create
     Visitor.create!(visitor_params).then do |visitor|

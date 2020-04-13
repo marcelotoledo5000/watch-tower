@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AppointmentsController < ApplicationController
+  authorize_resource
+
   # POST /appointments
   def create
     Appointment.create!(appointment_params).then do |appointment|

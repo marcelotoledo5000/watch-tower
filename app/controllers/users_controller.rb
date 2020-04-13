@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  authorize_resource
+
   # POST /users
   def create
     User.create!(user_params).then do |user|
