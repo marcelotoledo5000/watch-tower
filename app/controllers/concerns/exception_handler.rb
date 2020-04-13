@@ -15,5 +15,9 @@ module ExceptionHandler
     rescue_from ActionController::ParameterMissing do |error|
       json_response({ message: error.message }, :bad_request)
     end
+
+    rescue_from CanCan::AccessDenied do |error|
+      json_response({ message: error.message }, :unauthorized)
+    end
   end
 end
