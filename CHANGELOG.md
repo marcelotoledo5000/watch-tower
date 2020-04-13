@@ -1,4 +1,15 @@
-# watch_tower 0.1.0 (Apr 05, 2020)
+# watch_tower 0.2.0 (Apr 12, 2020)
+
+* Fixed the relationship between Store and Users
+* Minor adjustments
+* Setup Authentication
+* Add ReportsController
+* Added `cancancan` gem
+* Setup Authorization / Permissions
+
+  *Marcelo Toledo*
+
+## watch_tower 0.1.0 (Apr 11, 2020)
 
 * Added Appointment model
 
