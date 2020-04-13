@@ -3,7 +3,8 @@
 require 'rails_helper'
 
 describe 'Appointments', type: :request do
-  let(:user) { create(:user) }
+  let(:user_store) { create(:store) }
+  let(:user) { create(:user, role: 'employee', store: user_store) }
   let(:headers) { request_headers_jwt(user) }
 
   describe 'POST /appointments' do

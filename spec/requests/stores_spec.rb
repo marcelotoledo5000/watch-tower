@@ -57,6 +57,18 @@ describe 'Stores', type: :request do
       it { expect(response).to have_http_status :unauthorized }
       it { expect(response.body).to eq message }
     end
+
+    context 'when the user is an employee ' do
+      let(:user_store) { create(:store) }
+      let(:employee) { create(:user, role: 'employee', store: user_store) }
+      let(:headers) { request_headers_jwt(employee) }
+      let(:message) { 'You are not authorized to access this page.' }
+
+      before { post stores_path, headers: headers }
+
+      it { expect(response).to have_http_status :unauthorized }
+      it { expect(json[:message]).to eq message }
+    end
   end
 
   describe 'GET /stores' do
