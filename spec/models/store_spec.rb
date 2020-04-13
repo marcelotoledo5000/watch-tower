@@ -15,6 +15,11 @@ describe Store, type: :model do
       expect(store).to have_many(:appointments).inverse_of(:store).
         dependent(:destroy)
     end
+
+    it do
+      expect(store).to have_many(:users).inverse_of(:store).
+        dependent(:destroy)
+    end
   end
 
   context 'with validations' do

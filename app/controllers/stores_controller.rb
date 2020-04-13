@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class StoresController < ApplicationController
+  authorize_resource
+
   # POST /stores
   def create
     Store.create!(store_params).then do |store|
@@ -12,7 +14,7 @@ class StoresController < ApplicationController
   def index
     FilterStoresService.new(search_params).perform.then do |result|
       result.page(page_permitted).then do |stores|
-        render json: stores, status: :ok, root: 'stores'
+        render json: stores, status: :ok
       end
     end
   end
@@ -42,6 +44,7 @@ class StoresController < ApplicationController
 
   private
 
+  # TODO: need to handle the format of the input data (cnpj)
   def store_params
     params.require(:store).permit(:cnpj, :name)
   end

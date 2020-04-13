@@ -8,6 +8,7 @@ ruby '2.7.0'
 gem 'active_model_serializers', '~> 0.10.10'
 gem 'bcrypt', '~> 3.1'
 gem 'bootsnap', '>= 1.4', require: false
+gem 'cancancan', '~> 3.1'
 gem 'devise-jwt', '~> 0.6.0'
 gem 'dotenv-rails', '~> 2.7'
 gem 'kaminari', '~> 1.2'

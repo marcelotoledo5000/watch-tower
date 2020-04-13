@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class VisitorsController < ApplicationController
+  authorize_resource
+
   # POST /visitors
   def create
     Visitor.create!(visitor_params).then do |visitor|
@@ -42,6 +44,7 @@ class VisitorsController < ApplicationController
 
   private
 
+  # TODO: need to handle the format of the input data (cpf)
   def visitor_params
     params.require(:visitor).permit(:cpf, :name, :profile_photo, :store_id)
   end

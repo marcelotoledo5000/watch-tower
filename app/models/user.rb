@@ -15,8 +15,4 @@ class User < ApplicationRecord
   validates :store_id, presence: true, if: :employee?
 
   enum role: { employee: 0, admin: 1 }
-
-  def employee?
-    role == 'employee'
-  end
 end

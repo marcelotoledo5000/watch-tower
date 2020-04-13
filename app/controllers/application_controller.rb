@@ -5,6 +5,8 @@ class ApplicationController < ActionController::API
   include ExceptionHandler
   include Response
 
+  before_action :authenticate_user!
+
   private
 
   def page_permitted

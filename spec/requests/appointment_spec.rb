@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 describe 'Appointments', type: :request do
+  let(:user_store) { create(:store) }
+  let(:user) { create(:user, role: 'employee', store: user_store) }
+  let(:headers) { request_headers_jwt(user) }
+
   describe 'POST /appointments' do
     let(:visitor) { create(:visitor) }
     let(:store) { create(:store) }
@@ -22,10 +26,7 @@ describe 'Appointments', type: :request do
         formatted_date(valid_params[:appointment][:event_time])
       end
 
-      before do
-        post appointments_path,
-             params: valid_params
-      end
+      before { post appointments_path, params: valid_params, headers: headers }
 
       it 'creates a appointment' do
         expect(response).to have_http_status :created
@@ -40,7 +41,7 @@ describe 'Appointments', type: :request do
     context 'when is bad request' do
       let(:error_msg) { 'param is missing or the value is empty: appointment' }
 
-      before { post appointments_path, params: {} }
+      before { post appointments_path, params: {}, headers: headers }
 
       it { expect(response).to have_http_status :bad_request }
       it { expect(json[:message]).to match(/#{error_msg}/) }
@@ -49,7 +50,8 @@ describe 'Appointments', type: :request do
     context 'when the request is invalid' do
       before do
         post appointments_path,
-             params: { appointment: { field: '' } }
+             params: { appointment: { field: '' } },
+             headers: headers
       end
 
       it 'returns status code 422' do
@@ -58,13 +60,13 @@ describe 'Appointments', type: :request do
       end
     end
 
-    xcontext 'when the user is unauthorized' do
-      before do
-        post appointments_path,
-             params: valid_params
-      end
+    context 'when the user is unauthorized' do
+      let(:message) { 'You need to sign in or sign up before continuing.' }
+
+      before { post appointments_path, params: valid_params, headers: {} }
 
       it { expect(response).to have_http_status :unauthorized }
+      it { expect(response.body).to eq message }
     end
   end
 
@@ -74,7 +76,7 @@ describe 'Appointments', type: :request do
 
       before do
         appointments
-        get appointments_path
+        get appointments_path, headers: headers
       end
 
       it 'returns the appointments' do
@@ -85,12 +87,13 @@ describe 'Appointments', type: :request do
       it { expect(response).to have_http_status :ok }
     end
 
-    xcontext 'when the user is unauthorized' do
-      before do
-        get appointments_path
-      end
+    context 'when the user is unauthorized' do
+      let(:message) { 'You need to sign in or sign up before continuing.' }
+
+      before { get appointments_path, headers: {} }
 
       it { expect(response).to have_http_status :unauthorized }
+      it { expect(response.body).to eq message }
     end
   end
 end
