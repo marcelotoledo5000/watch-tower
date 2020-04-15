@@ -1,4 +1,11 @@
-# watch_tower 0.2.0 (Apr 12, 2020)
+# watch_tower 0.2.1 (Apr 13, 2020)
+
+* Add some seeds
+* Add README.md
+
+  *Marcelo Toledo*
+
+## watch_tower 0.2.0 (Apr 12, 2020)
 
 * Fixed the relationship between Store and Users
 * Minor adjustments
