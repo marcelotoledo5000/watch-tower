@@ -30,6 +30,7 @@ group :development, :test do
   gem 'rubycritic'
   gem 'shoulda-matchers', '~> 4.3'
   gem 'simplecov'
+  gem 'simplecov_badger'
 end
 
 group :development do
