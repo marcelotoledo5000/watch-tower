@@ -1,7 +1,17 @@
-# watch_tower 0.2.1 (Apr 13, 2020)
+# watch_tower 0.2.2 (Apr 25, 2020)
 
-* Add some seeds
-* Add README.md
+* Added `simplecov_badger` gem
+* Removed CodeClimate: `CC_TEST_REPORTER`
+* Added coverage badge to README.md
+* Updated some gems
+* Updated docker-compose
+
+  *Marcelo Toledo*
+
+## watch_tower 0.2.1 (Apr 13, 2020)
+
+* Added some seeds
+* Added README.md
 
   *Marcelo Toledo*
 
