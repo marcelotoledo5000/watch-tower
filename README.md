@@ -1,7 +1,7 @@
 # Watch Tower
 
 [![Maintainability][codeclimate-badge-maintainability]][codeclimate-maintainability]
-[![Test Coverage][codeclimate-badge-coverage]][codeclimate-coverage]
+[![Test Coverage][badge-coverage]][coverage]
 [![Build Status][travis-badge]][travis]
 
 ## About this project
@@ -18,7 +18,7 @@ It's a Rails application (API-only) to management the resources above by users a
 * The Ruby language - version 2.7.0
 * The Rails gem     - version 6.0.2
 * RSpec Rails       - version 4.0.0
-* Rubocop           - version 0.81.0
+* Rubocop           - version 0.82.0
 * cancancan         - version 3.1.0
 * devise-jwt        - version 0.6.0
 * PostgreSQL        - version 10
@@ -552,8 +552,8 @@ Watch Tower is open source, and we are grateful for
 [codeclimate-badge-maintainability]: https://api.codeclimate.com/v1/badges/a1e481e5a77faf4432cf/maintainability
 [codeclimate-maintainability]: https://codeclimate.com/github/marcelotoledo5000/watch-tower/maintainability
 
-[codeclimate-badge-coverage]: https://api.codeclimate.com/v1/badges/a1e481e5a77faf4432cf/test_coverage
-[codeclimate-coverage]: https://codeclimate.com/github/marcelotoledo5000/watch-tower/test_coverage
+[badge-coverage]: https://coverage.traels.it/badges/Z2l0QGdpdGh1Yi5jb206bWFyY2Vsb3RvbGVkbzUwMDAvd2F0Y2gtdG93ZXIuZ2l0
+[coverage]: https://codeclimate.com/github/marcelotoledo5000/watch-tower/test_coverage
 
 [travis-badge]: https://travis-ci.com/marcelotoledo5000/watch-tower.svg?branch=master
 [travis]: https://travis-ci.com/marcelotoledo5000/watch-tower
