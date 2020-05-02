@@ -1,4 +1,13 @@
-# watch_tower 0.2.2 (Apr 25, 2020)
+# watch_tower 0.2.3 (Mai 02, 2020)
+
+* Removed `simplecov_badger` gem
+* Added `codecov` gem
+* Added some badges to README.md
+* Updated some gems
+
+  *Marcelo Toledo*
+
+## watch_tower 0.2.2 (Apr 25, 2020)
 
 * Added `simplecov_badger` gem
 * Removed CodeClimate: `CC_TEST_REPORTER`
