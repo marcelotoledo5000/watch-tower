@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-require 'simplecov_badger'
+require 'codecov'
 
 SimpleCov.start do
   enable_coverage :branch
   SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new(
     [
       SimpleCov::Formatter::HTMLFormatter,
-      SimpleCov::Badger::Formatter
+      SimpleCov::Formatter::Codecov
     ]
   )
 end
