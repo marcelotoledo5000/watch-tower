@@ -18,6 +18,7 @@ gem 'rack-cors', '~> 1.1'
 gem 'rails', '~> 6.0.2'
 
 group :development, :test do
+  gem 'codecov', require: false
   gem 'database_cleaner', '~> 1.8'
   gem 'factory_bot_rails', '~> 5.1'
   gem 'faker', '~> 2.11'
@@ -30,7 +31,6 @@ group :development, :test do
   gem 'rubycritic'
   gem 'shoulda-matchers', '~> 4.3'
   gem 'simplecov'
-  gem 'simplecov_badger'
 end
 
 group :development do
