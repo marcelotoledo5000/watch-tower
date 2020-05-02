@@ -56,5 +56,6 @@ jobs:
       env:
         RAILS_ENV: test
         RUBYOPT: -W0
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         DEVISE_JWT_SECRET_KEY: ${{ secrets.DEVISE_JWT_SECRET_KEY }}
       run: bundle exec rspec
