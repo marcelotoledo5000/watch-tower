@@ -1,8 +1,6 @@
 # Watch Tower
 
-[![Maintainability][codeclimate-badge-maintainability]][codeclimate-maintainability]
-[![Test Coverage][badge-coverage]][coverage]
-[![Build Status][travis-badge]][travis]
+[![codebeat badge][codebeat-badge]][codebeat] [![Maintainability][codeclimate-badge-maintainability]][codeclimate-maintainability] [![Test Coverage][badge-coverage]][coverage] [![Build Status][travis-badge]][travis] [![Ruby][Github-Actions]][Github]
 
 ## About this project
 
@@ -552,8 +550,14 @@ Watch Tower is open source, and we are grateful for
 [codeclimate-badge-maintainability]: https://api.codeclimate.com/v1/badges/a1e481e5a77faf4432cf/maintainability
 [codeclimate-maintainability]: https://codeclimate.com/github/marcelotoledo5000/watch-tower/maintainability
 
-[badge-coverage]: https://coverage.traels.it/badges/Z2l0QGdpdGh1Yi5jb206bWFyY2Vsb3RvbGVkbzUwMDAvd2F0Y2gtdG93ZXIuZ2l0
-[coverage]: https://codeclimate.com/github/marcelotoledo5000/watch-tower/test_coverage
+[badge-coverage]: https://codecov.io/gh/marcelotoledo5000/watch-tower/branch/master/graph/badge.svg
+[coverage]: https://codecov.io/gh/marcelotoledo5000/watch-tower
 
 [travis-badge]: https://travis-ci.com/marcelotoledo5000/watch-tower.svg?branch=master
 [travis]: https://travis-ci.com/marcelotoledo5000/watch-tower
+
+[codebeat-badge]: https://codebeat.co/badges/79b5a436-3241-4d15-b961-04c6fddc6001
+[codebeat]: https://codebeat.co/projects/github-com-marcelotoledo5000-watch-tower-master
+
+[Github-Actions]: https://github.com/marcelotoledo5000/watch-tower/workflows/Ruby/badge.svg
+[Github]: https://github.com/marcelotoledo5000/watch-tower/workflows/Ruby/badge.svg

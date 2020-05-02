@@ -46,9 +46,16 @@ jobs:
         cp config/database.yml.github config/database.yml
         bundle exec rails db:reset db:setup db:migrate
 
+    - name: Run Rubocop
+      env:
+        RAILS_ENV: test
+        RUBYOPT: -W0
+      run: bundle exec rubocop --config .rubocop.yml
+
     - name: Run tests with RSpec
       env:
         RAILS_ENV: test
         RUBYOPT: -W0
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         DEVISE_JWT_SECRET_KEY: ${{ secrets.DEVISE_JWT_SECRET_KEY }}
       run: bundle exec rspec
