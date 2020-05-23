@@ -1,4 +1,11 @@
-# watch_tower 0.2.3 (Mai 02, 2020)
+# watch_tower 0.2.4 (Mai 23, 2020)
+
+* [Dependabot] Bump puma from 4.3.3 to 4.3.5
+* bump of some gems versions
+
+  *Marcelo Toledo*
+
+## watch_tower 0.2.3 (Mai 02, 2020)
 
 * Removed `simplecov_badger` gem
 * Added `codecov` gem
