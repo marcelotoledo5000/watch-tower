@@ -43,7 +43,7 @@ checks:
 plugins:
   rubocop:
     enabled: true
-    channel: "rubocop-0-80"
+    channel: "rubocop-0-83"
     config:
       file: ".rubocop.yml"
   brakeman:
