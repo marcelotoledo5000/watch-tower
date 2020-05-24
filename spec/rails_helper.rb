@@ -18,9 +18,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'database_cleaner'
 require File.expand_path('../config/environment', __dir__)
 
-if Rails.env.production?
-  abort('The Rails environment is running in production mode!')
-end
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 require 'rspec/rails'
 require 'devise/jwt/test_helpers'
