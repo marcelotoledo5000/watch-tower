@@ -9,9 +9,6 @@ AllCops:
     - 'Rakefile'
     - 'config/**/*'
     - 'bin/**/*'
-    - 'script/**/*'
-    - 'spec/rails_helper.rb'
-    - 'spec/spec_helper.rb'
     - 'vendor/**/*'
   UseCache: false
   TargetRailsVersion: 6.0
@@ -22,6 +19,15 @@ Capybara/FeatureMethods:
 
 Layout/DotPosition:
   EnforcedStyle: trailing
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
 
 Metrics/BlockLength:
   ExcludedMethods: ['describe', 'context', 'feature', 'scenario', 'let']
@@ -40,6 +46,9 @@ Style/ClassAndModuleChildren:
 
 Style/Documentation:
   Enabled: false
+
+Style/ExponentialNotation:
+  Enabled: true
 
 Style/HashEachMethods:
   Enabled: true
