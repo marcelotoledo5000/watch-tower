@@ -1,4 +1,11 @@
-# watch_tower 0.2.4 (Mai 23, 2020)
+# watch_tower 0.2.5 (Mai 23, 2020)
+
+* Update rubocop.yml
+* Organize and setup new cops
+
+  *Marcelo Toledo*
+
+## watch_tower 0.2.4 (Mai 23, 2020)
 
 * [Dependabot] Bump puma from 4.3.3 to 4.3.5
 * bump of some gems versions
