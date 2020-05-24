@@ -16,7 +16,7 @@ It's a Rails application (API-only) to management the resources above by users a
 * The Ruby language - version 2.7.0
 * The Rails gem     - version 6.0.2
 * RSpec Rails       - version 4.0.0
-* Rubocop           - version 0.82.0
+* Rubocop           - version 0.84.0
 * cancancan         - version 3.1.0
 * devise-jwt        - version 0.6.0
 * PostgreSQL        - version 10
