@@ -542,6 +542,13 @@ status: 200 Ok
 * Need to handle the format of the input data (cpf and cnpj)
 * Fix some code smells and other issues reported by Code Climate
 
+### STATUS CODE
+
+[![wakatime badge][wakatime-badge]][wakatime]
+
+[wakatime-badge]: https://wakatime.com/share/@MarceloToledo/c7218fea-f738-4d3e-ad0a-f750c222c766.png
+[wakatime]: https://wakatime.com/
+
 ## Contributing
 
 Watch Tower is open source, and we are grateful for
