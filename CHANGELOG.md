@@ -1,4 +1,10 @@
-# watch_tower 0.2.6 (Jul 26, 2020)
+# watch_tower 0.2.7 (Jul 26, 2020)
+
+* Bump a lot of gems
+
+  *Marcelo Toledo*
+
+## watch_tower 0.2.6 (Jul 26, 2020)
 
 * Updated REAME: Wakatime info
 * [Dependabot] Bump rack from 2.2.2 to 2.2.3
