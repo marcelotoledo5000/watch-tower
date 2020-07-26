@@ -1,4 +1,12 @@
-# watch_tower 0.2.5 (Mai 23, 2020)
+# watch_tower 0.2.6 (Jul 26, 2020)
+
+* Updated REAME: Wakatime info
+* [Dependabot] Bump rack from 2.2.2 to 2.2.3
+* Improved some factories
+
+  *Marcelo Toledo*
+
+## watch_tower 0.2.5 (Mai 23, 2020)
 
 * Update rubocop.yml
 * Organize and setup new cops
