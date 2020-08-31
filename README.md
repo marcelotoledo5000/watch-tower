@@ -2,6 +2,8 @@
 
 [![codebeat badge][codebeat-badge]][codebeat] [![Maintainability][codeclimate-badge]][codeclimate] [![Coverage][codecov-badge]][codecov] [![Build][travis-badge]][travis] [![Ruby][Github-Actions]][Github]
 
+[![Bugs][Bugs]][SonarCloud] [![Quality Gate Status][Quality Gate Status]][SonarCloud] [![Lines of Code][Lines of Code]][SonarCloud] [![Security Rating][Security Rating]][SonarCloud] [![Vulnerabilities][Vulnerabilities]][SonarCloud]
+
 ## About this project
 
 This project is a control visitors system.
@@ -14,14 +16,14 @@ It's a Rails application (API-only) to management the resources above by users a
 
 ```code
 * The Ruby language - version 2.7.0
-* The Rails gem     - version 6.0.2
-* RSpec Rails       - version 4.0.0
-* Rubocop           - version 0.84.0
+* The Rails gem     - version 6.0.3
+* RSpec Rails       - version 4.0.1
+* Rubocop           - version 0.89.1
 * cancancan         - version 3.1.0
 * devise-jwt        - version 0.6.0
 * PostgreSQL        - version 10
-* Docker            - version 19.03.8-ce
-* Docker Compose    - version 1.25.5
+* Docker            - version 19.03.12-ce
+* Docker Compose    - version 1.26.2
 ```
 
 ## To use
@@ -568,3 +570,10 @@ Watch Tower is open source, and we are grateful for
 
 [Github-Actions]: https://github.com/marcelotoledo5000/watch-tower/workflows/Ruby/badge.svg
 [Github]: https://github.com/marcelotoledo5000/watch-tower/workflows/Ruby/badge.svg
+
+[Quality Gate Status]: https://sonarcloud.io/api/project_badges/measure?project=marcelotoledo5000_watch-tower&metric=alert_status
+[Bugs]: https://sonarcloud.io/api/project_badges/measure?project=marcelotoledo5000_watch-tower&metric=bugs
+[Lines of Code]: https://sonarcloud.io/api/project_badges/measure?project=marcelotoledo5000_watch-tower&metric=ncloc
+[Security Rating]: https://sonarcloud.io/api/project_badges/measure?project=marcelotoledo5000_watch-tower&metric=security_rating
+[Vulnerabilities]: https://sonarcloud.io/api/project_badges/measure?project=marcelotoledo5000_watch-tower&metric=vulnerabilities
+[SonarCloud]: https://sonarcloud.io/dashboard?id=marcelotoledo5000_watch-tower
