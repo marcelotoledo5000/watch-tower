@@ -178,9 +178,8 @@ describe 'Stores', type: :request do
       before { get store_path(store.id), headers: headers }
 
       it 'returns the store' do
-        expect(json).not_to be_empty
-        expect(json[:cnpj]).to eq store.cnpj
         expect(json[:name]).to eq store.name
+        expect(json[:cnpj]).to eq store.cnpj
       end
 
       it { expect(response).to have_http_status :ok }
