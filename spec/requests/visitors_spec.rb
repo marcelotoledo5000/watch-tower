@@ -167,7 +167,7 @@ describe 'Visitors', type: :request do
       it { expect(json).to be_empty }
     end
 
-    context 'when the user is unauthorized' do
+    context 'when is unauthorized' do
       let(:message) { 'You need to sign in or sign up before continuing.' }
 
       before { get visitors_path, headers: {} }
