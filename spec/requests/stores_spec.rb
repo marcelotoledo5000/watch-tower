@@ -80,24 +80,14 @@ describe 'Stores', type: :request do
         get stores_path, headers: headers
       end
 
-      it 'returns the stores' do
-        expect(json).not_to be_empty
-        expect(json.size).to eq 11
-      end
-
+      it { expect(json.size).to eq 11 }
       it { expect(response).to have_http_status :ok }
     end
 
     context 'with search by cnpj' do
       let(:store) { create(:store, cnpj: 11_222_333_000_100) }
       let(:stores) { create_list(:store, 10) }
-      let(:params) do
-        {
-          search: {
-            cnpj: 11_222_333_000_100 # or '11_222_333_000_100'
-          }
-        }
-      end
+      let(:params) { { search: { cnpj: 11_222_333_000_100 } } }
 
       before do
         store
@@ -106,7 +96,6 @@ describe 'Stores', type: :request do
       end
 
       it 'finds the store' do
-        expect(json).not_to be_empty
         expect(json.first[:id]).to eq store.id
         expect(json.first[:cnpj]).to eq store.cnpj
         expect(json.first[:name]).to eq store.name
@@ -118,13 +107,7 @@ describe 'Stores', type: :request do
     context 'with search by name' do
       let(:store) { create(:store, name: 'The Incredible Store') }
       let(:stores) { create_list(:store, 10) }
-      let(:params) do
-        {
-          search: {
-            name: 'incredible'
-          }
-        }
-      end
+      let(:params) { { search: { name: 'incredible' } } }
 
       before do
         store
@@ -132,13 +115,7 @@ describe 'Stores', type: :request do
         get stores_path, params: params, headers: headers
       end
 
-      it 'returns the store' do
-        expect(json).not_to be_empty
-        expect(json.first[:id]).to eq store.id
-        expect(json.first[:cnpj]).to eq store.cnpj
-        expect(json.first[:name]).to eq store.name
-      end
-
+      it { expect(json.first[:name]).to eq store.name }
       it { expect(response).to have_http_status :ok }
     end
 
