@@ -105,7 +105,7 @@ describe 'Stores', type: :request do
         get stores_path, params: params, headers: headers
       end
 
-      it 'returns the store' do
+      it 'finds the store' do
         expect(json).not_to be_empty
         expect(json.first[:id]).to eq store.id
         expect(json.first[:cnpj]).to eq store.cnpj
