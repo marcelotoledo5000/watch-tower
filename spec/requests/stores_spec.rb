@@ -5,6 +5,7 @@ require 'rails_helper'
 describe 'Stores', type: :request do
   let(:user) { create(:user) }
   let(:headers) { request_headers_jwt(user) }
+  let(:sign_in_message) { 'You need to sign in or sign up before continuing.' }
 
   describe 'POST /stores' do
     let(:valid_params) do
@@ -50,12 +51,10 @@ describe 'Stores', type: :request do
     end
 
     context 'when the user is unauthorized' do
-      let(:message) { 'You need to sign in or sign up before continuing.' }
-
       before { post stores_path, headers: {} }
 
       it { expect(response).to have_http_status :unauthorized }
-      it { expect(response.body).to eq message }
+      it { expect(response.body).to eq sign_in_message }
     end
 
     context 'when the user is an employee ' do
@@ -139,12 +138,10 @@ describe 'Stores', type: :request do
     end
 
     context 'when the user is unauthorized' do
-      let(:message) { 'You need to sign in or sign up before continuing.' }
-
       before { get stores_path, headers: {} }
 
       it { expect(response).to have_http_status :unauthorized }
-      it { expect(response.body).to eq message }
+      it { expect(response.body).to eq sign_in_message }
     end
   end
 
@@ -173,12 +170,10 @@ describe 'Stores', type: :request do
     end
 
     context 'when the user is unauthorized' do
-      let(:message) { 'You need to sign in or sign up before continuing.' }
-
       before { get stores_path(100), headers: {} }
 
       it { expect(response).to have_http_status :unauthorized }
-      it { expect(response.body).to eq message }
+      it { expect(response.body).to eq sign_in_message }
     end
   end
 
@@ -225,12 +220,10 @@ describe 'Stores', type: :request do
     end
 
     context 'when the user is unauthorized' do
-      let(:message) { 'You need to sign in or sign up before continuing.' }
-
       before { put store_path(100), headers: {} }
 
       it { expect(response).to have_http_status :unauthorized }
-      it { expect(response.body).to eq message }
+      it { expect(response.body).to eq sign_in_message }
     end
   end
 
@@ -264,12 +257,10 @@ describe 'Stores', type: :request do
     end
 
     context 'when the user is unauthorized' do
-      let(:message) { 'You need to sign in or sign up before continuing.' }
-
       before { delete store_path(100), headers: {} }
 
       it { expect(response).to have_http_status :unauthorized }
-      it { expect(response.body).to eq message }
+      it { expect(response.body).to eq sign_in_message }
     end
   end
 end
