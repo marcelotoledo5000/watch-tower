@@ -20,9 +20,7 @@ describe 'Report', type: :request do
       it 'returns the report' do
         expect(json[:total_stores]).to eq 5
         expect(json[:stores].size).to eq 5
-        expect(
-          json[:stores].pluck(:total_visitors).sum
-        ).to eq 11
+        expect(json[:stores].pluck(:total_visitors).sum).to eq 11
       end
 
       it { expect(response).to have_http_status :ok }
