@@ -10,7 +10,7 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
   server:
-    image: skygvinn/alpine3-ruby2.7-nodejs:v1.0
+    image: skygvinn/alpine3-ruby2.7-nodejs:v1.2
     container_name: watch_tower
     ports:
       - "3000:3000"
