@@ -5,7 +5,7 @@ class Visitor < ApplicationRecord
   has_many :appointments, inverse_of: :visitor, dependent: :destroy
 
   validates :cpf, presence: true, length: { maximum: 11 }
-  validates :cpf, uniqueness: true, case_sensitive: false
+  validates :cpf, uniqueness: { case_sensitive: false }
   validates :name, presence: true
   validates :profile_photo, presence: true
 end
