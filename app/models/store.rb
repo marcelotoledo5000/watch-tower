@@ -6,6 +6,6 @@ class Store < ApplicationRecord
   has_many :users, inverse_of: :store, dependent: :destroy
 
   validates :cnpj, presence: true, length: { maximum: 14 }
-  validates :cnpj, uniqueness: true, case_sensitive: false
+  validates :cnpj, uniqueness: { case_sensitive: false }
   validates :name, presence: true
 end
