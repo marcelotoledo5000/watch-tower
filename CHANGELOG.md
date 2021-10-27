@@ -1,10 +1,10 @@
 # watch_tower 0.2.9 (Oct 26, 2021)
 
-  * Bump Rails version
-  * Bump Devise JWT version
-  * Bump a lot of gems
-  * Update docker-compose
-  * Remove travis
+* Bump Rails version
+* Bump Devise JWT version
+* Bump a lot of gems
+* Update docker-compose
+* Remove travis
 
   *Marcelo Toledo*
 
