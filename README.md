@@ -1,6 +1,6 @@
 # Watch Tower
 
-[![codebeat badge][codebeat-badge]][codebeat] [![Maintainability][codeclimate-badge]][codeclimate] [![Coverage][codecov-badge]][codecov] [![Build][travis-badge]][travis] [![Ruby][Github-Actions]][Github]
+[![codebeat badge][codebeat-badge]][codebeat] [![Maintainability][codeclimate-badge]][codeclimate] [![Coverage][codecov-badge]][codecov] [![Ruby][Github-Actions]][Github]
 
 [![Bugs][Bugs]][SonarCloud] [![Quality Gate Status][Quality Gate Status]][SonarCloud] [![Lines of Code][Lines of Code]][SonarCloud] [![Security Rating][Security Rating]][SonarCloud] [![Vulnerabilities][Vulnerabilities]][SonarCloud]
 
@@ -564,9 +564,6 @@ Watch Tower is open source, and we are grateful for
 
 [codecov-badge]: https://codecov.io/gh/marcelotoledo5000/watch-tower/branch/master/graph/badge.svg
 [codecov]: https://codecov.io/gh/marcelotoledo5000/watch-tower
-
-[travis-badge]: https://travis-ci.com/marcelotoledo5000/watch-tower.svg?branch=master
-[travis]: https://travis-ci.com/marcelotoledo5000/watch-tower
 
 [Github-Actions]: https://github.com/marcelotoledo5000/watch-tower/workflows/Ruby/badge.svg
 [Github]: https://github.com/marcelotoledo5000/watch-tower/workflows/Ruby/badge.svg
