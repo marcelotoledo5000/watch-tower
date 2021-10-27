@@ -15,7 +15,7 @@ gem 'kaminari', '~> 1.2'
 gem 'pg', '~> 1.2'
 gem 'puma', '~> 4.3'
 gem 'rack-cors', '~> 1.1'
-gem 'rails', '~> 6.0.2'
+gem 'rails', '~> 6.1'
 
 group :development, :test do
   gem 'codecov', require: false
