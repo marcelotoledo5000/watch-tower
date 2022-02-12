@@ -1,4 +1,14 @@
-# watch_tower 0.2.9 (Oct 26, 2021)
+# watch_tower 0.2.10 (Feb 12, 2022)
+
+* Bump a lot of gems
+* Remove CodeClimate
+* Update Rubocop setup
+* Fix required dependencies in environment files
+* Update README.md
+
+  *Marcelo Toledo*
+
+## watch_tower 0.2.9 (Oct 26, 2021)
 
 * Bump Rails version
 * Bump Devise JWT version
