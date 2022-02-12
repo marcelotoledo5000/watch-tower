@@ -2,9 +2,10 @@
 
 echo "Installing bundler"
 gem install bundler
+bundle update --bundler
 
 echo "Installing gems"
-bundle check || bundle install
+bundle check || bundle install || bundle update
 chown -R $USER:$USER .
 
 echo "Creating databases"
