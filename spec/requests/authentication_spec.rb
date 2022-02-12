@@ -27,7 +27,7 @@ describe 'Authentication', type: :request do
       end
 
       it 'returns valid JWT token' do
-        token_from_request = response.headers['Authorization'].split(' ').last
+        token_from_request = response.headers['Authorization'].split.last
         decoded_token = JWT.decode(token_from_request, devise_key, true)
 
         expect(decoded_token.first['sub']).to be_present
@@ -45,7 +45,7 @@ describe 'Authentication', type: :request do
     it do
       # create new session and get token
       post user_session_path, params: params
-      token_from_request = response.headers['Authorization'].split(' ').last
+      token_from_request = response.headers['Authorization'].split.last
 
       # delete this user session
       delete destroy_user_session_path,
