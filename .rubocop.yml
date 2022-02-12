@@ -8,20 +8,20 @@ AllCops:
     - 'db/**/*'
     - 'Rakefile'
     - 'config/**/*'
-    - 'bin/**/*'
     - 'vendor/**/*'
-  UseCache: false
-  TargetRailsVersion: 6.0
+
+  NewCops: enable
+
+  TargetRailsVersion: 6.1
   TargetRubyVersion: 2.7.0
 
-Capybara/FeatureMethods:
-  EnabledMethods: ['feature', 'scenario', 'xscenario','given', 'background']
+  UseCache: false
 
 Layout/DotPosition:
   EnforcedStyle: trailing
 
 Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context', 'feature', 'scenario', 'let']
+  IgnoredMethods: ['describe', 'context', 'feature', 'scenario', 'let']
 
 RSpec/ExampleLength:
   Enabled: false
@@ -29,6 +29,9 @@ RSpec/MultipleExpectations:
   Enabled: false
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
+
+RSpec/Capybara/FeatureMethods:
+  EnabledMethods: ['feature', 'scenario', 'xscenario','given', 'background']
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
