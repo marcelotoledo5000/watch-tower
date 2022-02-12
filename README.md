@@ -1,6 +1,6 @@
 # Watch Tower
 
-[![codebeat badge][codebeat-badge]][codebeat] [![Maintainability][codeclimate-badge]][codeclimate] [![Coverage][codecov-badge]][codecov] [![Ruby][Github-Actions]][Github]
+[![codebeat badge][codebeat-badge]][codebeat] [![Coverage][codecov-badge]][codecov] [![Ruby][Github-Actions]][Github]
 
 [![Bugs][Bugs]][SonarCloud] [![Quality Gate Status][Quality Gate Status]][SonarCloud] [![Lines of Code][Lines of Code]][SonarCloud] [![Security Rating][Security Rating]][SonarCloud] [![Vulnerabilities][Vulnerabilities]][SonarCloud]
 
@@ -16,14 +16,14 @@ It's a Rails application (API-only) to management the resources above by users a
 
 ```code
 * The Ruby language - version 2.7.0
-* The Rails gem     - version 6.0.3
-* RSpec Rails       - version 4.0.1
-* Rubocop           - version 0.89.1
-* cancancan         - version 3.1.0
-* devise-jwt        - version 0.6.0
-* PostgreSQL        - version 10
-* Docker            - version 19.03.12-ce
-* Docker Compose    - version 1.26.2
+* The Rails gem     - version 6.1.4
+* RSpec Rails       - version 4.0.2
+* Rubocop           - version 1.25.1
+* cancancan         - version 3.3.0
+* devise-jwt        - version 0.9.0
+* PostgreSQL        - version 11.5
+* Docker            - version 20.10.12
+* Docker Compose    - version 2.2.3
 ```
 
 ## To use
@@ -558,9 +558,6 @@ Watch Tower is open source, and we are grateful for
 
 [codebeat-badge]: https://codebeat.co/badges/79b5a436-3241-4d15-b961-04c6fddc6001
 [codebeat]: https://codebeat.co/projects/github-com-marcelotoledo5000-watch-tower-master
-
-[codeclimate-badge]: https://api.codeclimate.com/v1/badges/a1e481e5a77faf4432cf/maintainability
-[codeclimate]: https://codeclimate.com/github/marcelotoledo5000/watch-tower/maintainability
 
 [codecov-badge]: https://codecov.io/gh/marcelotoledo5000/watch-tower/branch/master/graph/badge.svg
 [codecov]: https://codecov.io/gh/marcelotoledo5000/watch-tower
