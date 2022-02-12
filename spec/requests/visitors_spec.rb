@@ -62,7 +62,7 @@ describe 'Visitors', type: :request do
       it { expect(response.body).to eq message }
     end
 
-    context 'when the user is an employee ' do
+    context 'when the user is an employee' do
       let(:user_store) { create(:store) }
       let(:employee) { create(:user, role: 'employee', store: user_store) }
       let(:headers) { request_headers_jwt(employee) }
