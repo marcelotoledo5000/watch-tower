@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'Authentication' do
-  let(:devise_key) { ENV['DEVISE_JWT_SECRET_KEY'] }
+  let(:devise_key) { ENV.fetch('DEVISE_JWT_SECRET_KEY', nil) }
   let(:user) { create(:user) }
   let(:params) do
     {

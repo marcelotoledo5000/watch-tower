@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'cancan/matchers'
 
-describe Ability, type: :model do
+describe Ability do
   subject(:ability) { described_class.new(user) }
 
   context 'when the user is admin' do

@@ -72,7 +72,7 @@ describe 'Appointments' do
 
   describe 'GET /appointments' do
     context 'when call the index of appointments' do
-      let(:appointments) { create_list(:appointment, 21) }
+      let(:appointments) { create_list(:appointment, 21) } # rubocop:disable FactoryBot/ExcessiveCreateList
 
       before do
         appointments

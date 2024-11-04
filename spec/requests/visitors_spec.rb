@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Visitors', type: :request do
+describe 'Visitors' do
   let(:user) { create(:user) }
   let(:headers) { request_headers_jwt(user) }
 
@@ -77,7 +77,7 @@ describe 'Visitors', type: :request do
 
   describe 'GET /visitors' do
     context 'when call the index of visitors' do
-      let(:visitors) { create_list(:visitor, 11) }
+      let(:visitors) { create_list(:visitor, 11) } # rubocop:disable FactoryBot/ExcessiveCreateList
 
       before do
         visitors

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe User, type: :model do
+describe User do
   subject(:user) { create(:user) }
 
   context 'with associations' do

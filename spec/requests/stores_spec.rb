@@ -72,7 +72,7 @@ describe 'Stores' do
 
   describe 'GET /stores' do
     context 'when call the index of stores' do
-      let(:stores) { create_list(:store, 11) }
+      let(:stores) { create_list(:store, 11) } # rubocop:disable FactoryBot/ExcessiveCreateList
 
       before do
         stores

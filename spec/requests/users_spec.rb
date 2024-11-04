@@ -98,7 +98,7 @@ describe 'Users' do
   describe 'GET /users' do
     context 'when returns users' do
       before do
-        create_list(:user, 25)
+        create_list(:user, 25) # rubocop:disable FactoryBot/ExcessiveCreateList
         get users_path, headers: headers
       end
 

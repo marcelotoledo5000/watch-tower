@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Report', type: :request do
+describe 'Report' do
   describe 'GET /reports' do
     context 'when call the index of reports' do
       before do
