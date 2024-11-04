@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Authentication', type: :request do
+describe 'Authentication' do
   let(:devise_key) { ENV['DEVISE_JWT_SECRET_KEY'] }
   let(:user) { create(:user) }
   let(:params) do
@@ -14,7 +14,7 @@ describe 'Authentication', type: :request do
     }
   end
 
-  describe 'POST /login', type: :request do
+  describe 'POST /login' do
     context 'when params are correct' do
       before do
         post user_session_path, params: params
@@ -41,7 +41,7 @@ describe 'Authentication', type: :request do
     end
   end
 
-  describe 'DELETE /logout', type: :request do
+  describe 'DELETE /logout' do
     it do
       # create new session and get token
       post user_session_path, params: params

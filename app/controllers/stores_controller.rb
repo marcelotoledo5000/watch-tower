@@ -3,13 +3,6 @@
 class StoresController < ApplicationController
   authorize_resource
 
-  # POST /stores
-  def create
-    Store.create!(store_params).then do |store|
-      json_response store, :created
-    end
-  end
-
   # GET /stores
   def index
     FilterStoresService.new(search_params).perform.then do |result|
@@ -23,6 +16,13 @@ class StoresController < ApplicationController
   def show
     Store.find(params[:id]).then do |store|
       json_response store
+    end
+  end
+
+  # POST /stores
+  def create
+    Store.create!(store_params).then do |store|
+      json_response store, :created
     end
   end
 

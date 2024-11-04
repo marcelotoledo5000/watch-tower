@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Store, type: :model do
+describe Store do
   subject(:store) { create(:store) }
 
   context 'with associations' do

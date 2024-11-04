@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Stores', type: :request do
+describe 'Stores' do
   let(:user) { create(:user) }
   let(:headers) { request_headers_jwt(user) }
   let(:sign_in_message) { 'You need to sign in or sign up before continuing.' }

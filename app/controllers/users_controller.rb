@@ -3,19 +3,19 @@
 class UsersController < ApplicationController
   authorize_resource
 
-  # POST /users
-  def create
-    User.create!(user_params).then do |user|
-      json_response user, :created
-    end
-  end
-
   # GET /users
   def index
     User.all.then do |result|
       result.page(page_permitted).then do |users|
         json_response users
       end
+    end
+  end
+
+  # POST /users
+  def create
+    User.create!(user_params).then do |user|
+      json_response user, :created
     end
   end
 
