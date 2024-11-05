@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :visitor do
-    cpf { Faker::IDNumber.unique.brazilian_citizen_number }
+    cpf { Faker::IdNumber.unique.brazilian_citizen_number }
     name { Faker::Books::Dune.character }
     profile_photo { Faker::File.file_name(dir: 'path/to', ext: 'jpg') }
     store
