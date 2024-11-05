@@ -3,13 +3,6 @@
 class VisitorsController < ApplicationController
   authorize_resource
 
-  # POST /visitors
-  def create
-    Visitor.create!(visitor_params).then do |visitor|
-      json_response visitor, :created
-    end
-  end
-
   # GET /visitors
   def index
     FilterVisitorsService.new(search_params).perform.then do |result|
@@ -23,6 +16,13 @@ class VisitorsController < ApplicationController
   def show
     Visitor.find(params[:id]).then do |visitor|
       json_response visitor
+    end
+  end
+
+  # POST /visitors
+  def create
+    Visitor.create!(visitor_params).then do |visitor|
+      json_response visitor, :created
     end
   end
 

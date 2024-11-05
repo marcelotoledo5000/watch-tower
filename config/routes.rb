@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[create index update]
   resources :appointments, only: %i[create index]
   resources :reports, only: :index
+
+  get 'up' => 'rails/health#show', as: :rails_health_check
 end

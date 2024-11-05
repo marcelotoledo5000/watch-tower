@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Visitor, type: :model do
+describe Visitor do
   subject(:visitor) { create(:visitor) }
 
   context 'with associations' do

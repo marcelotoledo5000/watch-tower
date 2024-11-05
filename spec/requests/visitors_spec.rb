@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Visitors', type: :request do
+describe 'Visitors' do
   let(:user) { create(:user) }
   let(:headers) { request_headers_jwt(user) }
 
@@ -274,13 +274,12 @@ describe 'Visitors', type: :request do
       let(:store) { create(:store) }
       let(:visitor) { create(:visitor, store: store) }
       let(:id) { visitor.id }
-      let(:message) { "Couldn't find Visitor with 'id'=#{id}" }
 
       before { delete visitor_path(visitor.id), headers: headers }
 
       it 'deletes the visitor' do
         expect { visitor.reload }.
-          to raise_error(ActiveRecord::RecordNotFound, message)
+          to raise_error(ActiveRecord::RecordNotFound)
       end
 
       it 'returns status code 204' do

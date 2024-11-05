@@ -1,8 +1,6 @@
 # https://github.com/marcelotoledo5000/Dockerfiles
 # https://hub.docker.com/repository/docker/skygvinn/alpine3-ruby2.7-nodejs
 
-version: '3.8'
-
 services:
   db:
     image: postgres

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Appointment, type: :model do
+describe Appointment do
   subject(:appointment) { create(:appointment) }
 
   context 'with associations' do

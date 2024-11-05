@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Users', type: :request do
+describe 'Users' do
   let(:user_admin) { create(:user) }
   let(:headers) { request_headers_jwt(user_admin) }
 
