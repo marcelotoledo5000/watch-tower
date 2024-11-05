@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if Rails.env.development?
   store1 = FactoryBot.create(:store)
   store2 = FactoryBot.create(:store)
