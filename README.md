@@ -13,15 +13,15 @@ It's a Rails application (API-only) to management the resources above by users a
 ## Technical Informations and dependencies
 
 ```code
-* The Ruby language - version 2.7.0
-* The Rails gem     - version 6.1.4
-* RSpec Rails       - version 4.0.2
-* Rubocop           - version 1.25.1
-* cancancan         - version 3.3.0
-* devise-jwt        - version 0.9.0
-* PostgreSQL        - version 11.5
-* Docker            - version 20.10.12
-* Docker Compose    - version 2.2.3
+* Ruby              - version 3.3.0
+* Rails             - version 7.2.2
+* RSpec Rails       - version 7.0.1
+* Rubocop           - version 1.59.0
+* cancancan         - version 3.6.1
+* devise-jwt        - version 0.12.1
+* PostgreSQL        - version 16
+* Docker            - version 27.2.1
+* Docker Compose    - version 2.29.5
 ```
 
 ## To use
