@@ -1,3 +1,12 @@
+# Omakase Ruby styling for Rails
+# inherit_gem: { rubocop-rails-omakase: rubocop.yml } ## Uncomment this to use the omakase gem's shared configuration
+
+# Overwrite or add rules to create your own house style
+#
+# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
+# Layout/SpaceInsideArrayLiteralBrackets:
+#   Enabled: false
+
 require:
   - rubocop-performance
   - rubocop-rails
@@ -12,8 +21,8 @@ AllCops:
 
   NewCops: enable
 
-  TargetRailsVersion: 6.1
-  TargetRubyVersion: 2.7.0
+  TargetRailsVersion: 7.2
+  TargetRubyVersion: 3.3.0
 
   UseCache: false
 
@@ -30,9 +39,6 @@ RSpec/MultipleExpectations:
   Enabled: false
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
-
-RSpec/Capybara/FeatureMethods:
-  EnabledMethods: ['feature', 'scenario', 'xscenario','given', 'background']
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
