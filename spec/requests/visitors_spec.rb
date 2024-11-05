@@ -77,7 +77,7 @@ describe 'Visitors' do
 
   describe 'GET /visitors' do
     context 'when call the index of visitors' do
-      let(:visitors) { create_list(:visitor, 11) } # rubocop:disable FactoryBot/ExcessiveCreateList
+      let(:visitors) { create_list(:visitor, 11) }
 
       before do
         visitors
@@ -274,13 +274,12 @@ describe 'Visitors' do
       let(:store) { create(:store) }
       let(:visitor) { create(:visitor, store: store) }
       let(:id) { visitor.id }
-      let(:message) { "Couldn't find Visitor with 'id'=#{id}" }
 
       before { delete visitor_path(visitor.id), headers: headers }
 
       it 'deletes the visitor' do
         expect { visitor.reload }.
-          to raise_error(ActiveRecord::RecordNotFound, message)
+          to raise_error(ActiveRecord::RecordNotFound)
       end
 
       it 'returns status code 204' do

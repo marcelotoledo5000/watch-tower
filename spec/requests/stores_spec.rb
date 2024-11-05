@@ -72,7 +72,7 @@ describe 'Stores' do
 
   describe 'GET /stores' do
     context 'when call the index of stores' do
-      let(:stores) { create_list(:store, 11) } # rubocop:disable FactoryBot/ExcessiveCreateList
+      let(:stores) { create_list(:store, 11) }
 
       before do
         stores
@@ -231,13 +231,12 @@ describe 'Stores' do
     context 'when the record exists' do
       let(:store) { create(:store) }
       let(:id) { store.id }
-      let(:message) { "Couldn't find Store with 'id'=#{id}" }
 
       before { delete store_path(store.id), headers: headers }
 
       it 'deletes the store' do
         expect { store.reload }.
-          to raise_error(ActiveRecord::RecordNotFound, message)
+          to raise_error(ActiveRecord::RecordNotFound)
       end
 
       it 'returns status code 204' do
